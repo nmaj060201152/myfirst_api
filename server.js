@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 
-// Port define karein
-const PORT = 5000;
+
 
 // Sample array of objects
 const navaid = [
@@ -11,12 +10,10 @@ const navaid = [
   { id: 3, name: "Jumerat",  vdo: "https://www.youtube.com/watch?v=SsegBgYezGE" }
 ];
 
-// API route
-app.get('/api/navaid', (req, res) => {
-  res.json(navaid); // JSON format me response
-});
-
-// Server start karein
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+export default function handler(req, res) {
+    if (req.method === "GET") {
+      res.status(200).json(navaid); // JSON response
+    } else {
+      res.status(405).json({ message: "Method not allowed" }); // Handle other HTTP methods
+    }
+  }
