@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
 
 
@@ -10,10 +10,10 @@ const navaid = [
   { id: 3, name: "Jumerat",  vdo: "https://www.youtube.com/watch?v=SsegBgYezGE" }
 ];
 
-export default function handler(req, res) {
-    if (req.method === "GET") {
-      res.status(200).json(navaid); // JSON response
-    } else {
-      res.status(405).json({ message: "Method not allowed" }); // Handle other HTTP methods
-    }
+module.exports = function handler(req, res) {
+  if (req.method === "GET") {
+    res.status(200).json(navaid);
+  } else {
+    res.status(405).json({ message: "Method not allowed" });
   }
+};
